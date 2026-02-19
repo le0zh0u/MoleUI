@@ -9,19 +9,9 @@ import SwiftUI
 
 struct UninstallView: View {
     var body: some View {
-        VStack(spacing: 20) {
-            Image(systemName: "trash")
-                .font(.system(size: 60))
-                .foregroundColor(.red)
-            Text("Uninstall")
-                .font(.largeTitle)
-            Text("Remove apps completely")
-                .foregroundColor(.secondary)
-            Text("Coming soon in Sprint 4")
-                .font(.caption)
-                .foregroundColor(.orange)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        // 临时使用 FileDeleter 测试视图
+        // Sprint 2: 测试文件删除功能
+        FileDeleterTestView()
     }
 }
 

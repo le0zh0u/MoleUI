@@ -44,3 +44,15 @@ function_body_length:
 type_body_length:
   warning: 300
   error: 500
+
+# Custom rules
+custom_rules:
+  # os.log (Logger) 不接受运行时 String 拼接（+ 运算符）
+  # 必须使用单个字符串字面量 + 插值，或先赋值为局部变量再插值
+  # 错误示例: logger.info("foo" + bar)
+  # 正确示例: logger.info("foo \(bar)")  或  let s = "foo" + bar; logger.info("\(s)")
+  oslog_no_string_concat:
+    name: "os.log String Concatenation"
+    regex: 'logger\.(trace|debug|info|notice|warning|error|critical|fault)\s*\(\s*"[^"]*"\s*\+'
+    message: "os.log methods do not accept runtime String concatenation (+). Use string interpolation within a single literal, or assign to a variable first."
+    severity: error
